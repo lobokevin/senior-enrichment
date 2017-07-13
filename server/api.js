@@ -8,8 +8,10 @@ const db = require('../db')
 
 //router.get('/hello', (req, res) => res.send({hello: 'world'}))
 
-router.use('/students', require('./student.router'));
+router.use('/student', require('./student.router'));
 
 router.use('/campus', require('./campus.router'));
+
+// catch all error routes
 
 module.exports = router;
