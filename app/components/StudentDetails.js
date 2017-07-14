@@ -10,6 +10,7 @@ class StudentDetails extends Component {
     super(props)
 
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
 handleSubmit(event){
@@ -33,7 +34,17 @@ handleSubmit(event){
 
 handleChange(event){
   event.preventDefault();
-  console.log(event.target.value);
+  let id = event.target.value;
+
+  let student = null;
+
+  student = this.props.students.filter(stud => {
+    if (stud.id === id){
+      return stud
+    }
+  })
+
+  console.log(student);
 }
 
 
@@ -102,6 +113,7 @@ handleChange(event){
 // CONTAINER
 
 const mapProps = state => ({
+  students: state.students,
   campuses: state.campus
 });
 
