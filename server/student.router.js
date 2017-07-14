@@ -30,7 +30,7 @@ router.get('/:id', function(req, res, next){
 // - new student
 
 router.post('/', function(req, res, next){
-  Student.create({name: req.body.name})
+  Student.create({name: req.body.name, email: req.body.email, password: req.body.password, campusId: req.body.campusId})
   .then(function(newStudent){
     res.status(201).json(newStudent);
   })

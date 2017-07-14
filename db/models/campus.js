@@ -6,7 +6,10 @@ var db = require('../index.js')
 
 
 var Campus = db.define('campus', {
-  name: Sequelize.STRING
+  name: {
+    type: Sequelize.STRING,
+    unique: true
+  }
 }, {
   freezeTableName: true
 })
