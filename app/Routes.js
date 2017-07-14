@@ -8,10 +8,11 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import AllCampus from './components/AllCampus';
 import AllStudents from './components/AllStudents';
-import CampusList from './components/CampusList'
-import NewStudent from './components/NewStudent'
-import {fetchStudentsThunk} from './reducers/student'
-import {fetchCampusesThunk} from './reducers/campus'
+import CampusList from './components/CampusList';
+import NewStudent from './components/NewStudent';
+import StudentDetails from './components/StudentDetails';
+import {fetchStudentsThunk} from './reducers/student';
+import {fetchCampusesThunk} from './reducers/campus';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -30,7 +31,8 @@ class Routes extends Component {
             <Route exact path="/students" component={AllStudents} />
             <Route exact path="/campus/:id" component={CampusList} />
             <Route exact path="/student" component={NewStudent} />
-          <Route exact path="/" component={AllCampus} />
+            <Route exact path="/" component={AllCampus} />
+            <Route exact path="/update" component={StudentDetails} />
           {/* <Route exat path="" */}
             <Route component={AllCampus} />
           </Switch>

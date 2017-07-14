@@ -24,7 +24,10 @@ handleDelete(event){
 
         <div className="row">
           <div className="col-md-4">
-            <Link to="/student"> <button className="btn btn-lg btn-warning pull-right">Add </button> </Link>
+            <Link to="/student"> <button className="btn btn-lg btn-primary">Add </button> </Link>
+          </div>
+          <div className="col-md-4">
+            <Link to="/update"> <button className="btn btn-lg btn-primary pull-right">Update </button> </Link>
           </div>
         </div>
 
