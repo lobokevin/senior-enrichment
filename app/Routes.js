@@ -30,9 +30,10 @@ class Routes extends Component {
           <Switch>
             <Route exact path="/students" component={AllStudents} />
             <Route exact path="/campus/:id" component={CampusList} />
+            <Route exact path="/student/:id" component={StudentDetails} />
             <Route exact path="/student" component={NewStudent} />
             <Route exact path="/" component={AllCampus} />
-            <Route exact path="/update" component={StudentDetails} />
+
           {/* <Route exat path="" */}
             <Route component={AllCampus} />
           </Switch>

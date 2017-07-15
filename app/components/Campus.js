@@ -11,7 +11,6 @@ export default class Campus extends Component {
     return (
       <div className="col-md-6">
         <div className="card" style={{width: '20rem'}}>
-        <img className="card-img-top" src="..." alt="Card image cap" />
         <div className="card-block">
         <h4 className="card-title"> {this.props.value.name} </h4>
       <p className="card-text"> The best campus </p>

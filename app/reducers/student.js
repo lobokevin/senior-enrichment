@@ -23,6 +23,8 @@ export default function reducer (student = [], action) {
       return action.students;
 
     case UPDATE_STUDENT:
+    console.log('action.student', action.student);
+    console.log('student', student);
     return student.map(stud => (
         action.stud.id === stud.id ? action.stud : stud
       ));
@@ -54,8 +56,8 @@ export const createStudentThunk = student => dispatch => {
        .catch(err => console.error(`Creating student: ${student} unsuccesful`, err));
 };
 
-export const updateStudentThunk = (id, student) => dispatch => {
-  axios.put(`/api/student/${id}`, student)
+export const updateStudentThunk = (student) => dispatch => {
+  axios.put(`/api/student/${student.id}`, student)
        .then(res => dispatch(updateStudent(res.data)))
        .catch(err => console.error(`Updating user: ${student} unsuccesful`, err));
 };

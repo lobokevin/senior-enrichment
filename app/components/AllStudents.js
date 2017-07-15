@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {deleteStudentThunk} from '../reducers/student';
+import {deleteStudentThunk, fetchStudentsThunk} from '../reducers/student';
 import { Link } from 'react-router-dom';
+
 
 class AllStudents extends Component {
   constructor(props) {
@@ -16,7 +17,6 @@ handleDelete(event){
 }
 
   render(){
-
     let allStudents = this.props.students;
 
     return (
@@ -24,10 +24,7 @@ handleDelete(event){
 
         <div className="row">
           <div className="col-md-4">
-            <Link to="/student"> <button className="btn btn-lg btn-primary">Add </button> </Link>
-          </div>
-          <div className="col-md-4">
-            <Link to="/update"> <button className="btn btn-lg btn-primary pull-right">Update </button> </Link>
+            <Link to="/student"> <button className="btn btn-lg btn-primary">Add a student</button> </Link>
           </div>
         </div>
 
@@ -40,6 +37,7 @@ handleDelete(event){
              <th>Name</th>
              <th>Email</th>
              <th>Delete</th>
+            <th>Update</th>
            </tr>
          </thead>
          <tbody>
@@ -48,6 +46,7 @@ handleDelete(event){
                <td>{stud.name}</td>
              <td>{stud.email}</td>
            <td><button className="btn btn-sm  btn-danger" value={stud.id} onClick={this.handleDelete} name="id" >Delete</button></td>
+         <td><Link to={`/student/${stud.id}`}> <button className="btn btn-sm  btn-success">Update this student</button> </Link></td>
              </tr>)
 
            })}
