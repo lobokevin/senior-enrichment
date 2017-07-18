@@ -43,7 +43,7 @@ handleSubmit(event){
     campusId: campusValue
   }
 
-  //console.log('newOBj', newObj);
+  // console.log('newOBj', newObj);
   this.props.updateStudent(newObj);
   this.props.history.push('/');
   //this.props.history.push('/students');

@@ -53,7 +53,7 @@ router.post('/', function(req, res, next){
 router.put('/:id', function(req, res, next){
   Student.findById(req.params.id)
   .then(function(stud){
-    stud.update({
+    return stud.update({
       name: req.body.name,
       email: req.body.email,
       password: req.body.password,
@@ -73,7 +73,7 @@ router.put('/:id', function(req, res, next){
 router.delete('/:id', function(req, res, next){
   Student.findById(req.params.id)
   .then(function(stud){
-    stud.destroy()
+    return stud.destroy()
   })
   .then(function(){
     res.status(204).end();
