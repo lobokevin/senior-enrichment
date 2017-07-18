@@ -65,6 +65,9 @@ handleDelete(event){
 const mapDispatch = dispatch => ({
   deleteStudent: (id) => {
     dispatch(deleteStudentThunk(id));
+    //technically it's deleteStudentThunkCreator.. and deleteStudentThunk is the value returned from deleteStudentThunkCreator(id)
+    //Sounds like I'm splitting hairs (and most students won't know the difference) but it's really important to make
+    //that distinction
   }
 }
 );

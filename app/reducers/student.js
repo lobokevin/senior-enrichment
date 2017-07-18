@@ -16,7 +16,7 @@ const createStudent = student => ({type: CREATE_STUDENT, student})
 
 /* ------------       REDUCER     ------------------ */
 
-export default function reducer (student = [], action) {
+export default function reducer (student = [], action) {//students = [] might be more accurate
   switch (action.type) {
 
     case GET_STUDENTS:
@@ -31,7 +31,7 @@ export default function reducer (student = [], action) {
 
     case DELETE_STUDENT:
     return student.filter(function(stud){
-      return stud.id !== +action.id
+      return stud.id !== +action.id//nicely done
     }
   );
 
@@ -46,24 +46,24 @@ export default function reducer (student = [], action) {
 /* ------------   THUNK CREATORS     ------------------ */
 
 export const fetchStudentsThunk = () => dispatch => {
-  axios.get('/api/student')
+  return axios.get('/api/student')
        .then(res => dispatch(getStudents(res.data)));
 };
 
 export const createStudentThunk = student => dispatch => {
-  axios.post('/api/student', student)
+  return axios.post('/api/student', student)
        .then(res => dispatch(createStudent(res.data)))
        .catch(err => console.error(`Creating student: ${student} unsuccesful`, err));
 };
 
 export const updateStudentThunk = (student) => dispatch => {
-  axios.put(`/api/student/${student.id}`, student)
+  return axios.put(`/api/student/${student.id}`, student)
        .then(res => dispatch(updateStudent(res.data)))
        .catch(err => console.error(`Updating user: ${student} unsuccesful`, err));
 };
 
 export const deleteStudentThunk = id => dispatch => {
-  dispatch(deleteStudent(id));
-  axios.delete(`/api/student/${id}`)
+  dispatch(deleteStudent(id));//This should not be here... this is called optimistic loading.  This should only happen AFTER the axios.delete is successful
+  return axios.delete(`/api/student/${id}`)
        .catch(err => console.error(`Deleting student: ${id} unsuccesful`, err));
 };

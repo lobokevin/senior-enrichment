@@ -135,4 +135,4 @@ const mapDispatch = dispatch => ({
 }
 );
 
-export default withRouter(connect(mapProps, mapDispatch)(StudentDetails));
+export default withRouter(connect(mapProps, mapDispatch)(StudentDetails));//is withRouter necessary?

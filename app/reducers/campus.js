@@ -11,7 +11,7 @@ const getCampuses   = campuses => ({ type: GET_CAMPUSES, campuses });
 
 /* ------------       REDUCER     ------------------ */
 
-export default function reducer (campus = [], action) {
+export default function reducer (campus = [], action) {//campuses = [] might be more accurate
   switch (action.type) {
 
     case GET_CAMPUSES:
@@ -25,6 +25,6 @@ export default function reducer (campus = [], action) {
 /* ------------   THUNK CREATORS     ------------------ */
 
 export const fetchCampusesThunk = () => dispatch => {
-  axios.get('/api/campus')
+  return axios.get('/api/campus')
        .then(res => dispatch(getCampuses(res.data)));
 };
