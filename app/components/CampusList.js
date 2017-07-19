@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 
 class CampusList extends Component {
-  constructor(props) {
+  constructor(props) {//empty constructor..
     super(props)
 
   }

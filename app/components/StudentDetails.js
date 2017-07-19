@@ -43,7 +43,7 @@ handleSubmit(event){
     campusId: campusValue
   }
 
-  //console.log('newOBj', newObj);
+  // console.log('newOBj', newObj);
   this.props.updateStudent(newObj);
   this.props.history.push('/');
   //this.props.history.push('/students');
@@ -135,4 +135,4 @@ const mapDispatch = dispatch => ({
 }
 );
 
-export default withRouter(connect(mapProps, mapDispatch)(StudentDetails));
+export default withRouter(connect(mapProps, mapDispatch)(StudentDetails));//is withRouter necessary?

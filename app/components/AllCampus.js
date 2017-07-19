@@ -3,7 +3,7 @@ import Campus from './Campus';
 import {connect} from 'react-redux';
 
 class AllCampus extends Component {
-  constructor(props) {
+  constructor(props) {//empty constructors are unnecessary
     super(props)
   }
 

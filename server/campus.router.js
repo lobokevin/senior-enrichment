@@ -40,7 +40,7 @@ router.post('/', function(req, res, next){
 router.put('/:id', function(req, res, next){
   Campus.findById(req.params.id)
   .then(function(campus){
-    campus.update({name: req.body.name})
+    return campus.update({name: req.body.name})
   })
   .then(function(updatedCampus){
     res.status(201).json(updatedCampus);
@@ -53,7 +53,7 @@ router.put('/:id', function(req, res, next){
 router.delete('/:id', function(req, res, next){
   Campus.findById(req.params.id)
   .then(function(campus){
-    campus.destroy()
+    return campus.destroy()
   })
   .then(function(){
     res.status(204).end();

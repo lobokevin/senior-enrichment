@@ -13,6 +13,10 @@ router.get('/', function(req, res, next){
     res.status(200).json(students);
   })
   .catch(err => console.log(err));
+  //this works fine, but you can also make an error handler, and just do .catch(next)
+  //don't know which one off the top of my head, but some of our earlier workshops
+  //has examples of this.  Let me know if you want to implement something like that
+  //it can save some typing
 })
 
 // - a student by id
@@ -30,7 +34,12 @@ router.get('/:id', function(req, res, next){
 // - new student
 
 router.post('/', function(req, res, next){
-  Student.create({name: req.body.name, email: req.body.email, password: req.body.password, campusId: req.body.campusId})
+  Student.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    campusId: req.body.campusId
+  })
   .then(function(newStudent){
     res.status(201).json(newStudent);
   })
@@ -44,7 +53,12 @@ router.post('/', function(req, res, next){
 router.put('/:id', function(req, res, next){
   Student.findById(req.params.id)
   .then(function(stud){
-    stud.update({name: req.body.name, email: req.body.email, password: req.body.password, campusId: req.body.campusId}) // whatever else
+    return stud.update({
+      name: req.body.name,
+      email: req.body.email,
+      password: req.body.password,
+      campusId: req.body.campusId
+    }) // whatever else
   })
   .then(function(updatedStudent){
     res.status(201).json(updatedStudent);
@@ -59,7 +73,7 @@ router.put('/:id', function(req, res, next){
 router.delete('/:id', function(req, res, next){
   Student.findById(req.params.id)
   .then(function(stud){
-    stud.destroy()
+    return stud.destroy()
   })
   .then(function(){
     res.status(204).end();

@@ -97,9 +97,9 @@ const mapProps = state => ({
 
 const mapDispatch = dispatch => ({
   createStudent: (student) => {
-    dispatch(createStudentThunk(student));
+    dispatch(createStudentThunk(student));//createStudentThunkCreator
   }
 }
 );
 
-export default withRouter(connect(mapProps, mapDispatch)(NewStudent));
+export default withRouter(connect(mapProps, mapDispatch)(NewStudent));//is withRouter necessary?
