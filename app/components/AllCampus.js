@@ -6,7 +6,7 @@ class AllCampus extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
         <div className="row">
           <h3>Welcome to Margaret Hamilton's Code Academy</h3>
         </div>

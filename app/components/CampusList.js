@@ -44,11 +44,7 @@ class CampusList extends Component {
                 if (stud.campusId === +this.props.match.params.id) {
                   return (
                     <tr key={stud.id}>
-                      <Link to={`/student/${stud.id}`}>
-                        <a>
-                          <td>{stud.name}</td>
-                        </a>
-                      </Link>
+                      <td><Link to={`/student/${stud.id}`}>{stud.name}</Link></td>
                     </tr>
                   );
                 }
