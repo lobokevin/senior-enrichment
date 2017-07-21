@@ -3,10 +3,6 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 
 class CampusList extends Component {
-  constructor(props) { //empty constructor..
-    super(props)
-
-  }
 
   render() {
 
@@ -15,16 +11,26 @@ class CampusList extends Component {
       return camp.id === +this.props.match.params.id
     });
 
-    var name = 'Campus';
+    let  name = 'Campus';
+    let  id = 0;
+
     if (campus[0]) {
       name = campus[0].name;
+      id = campus[0].id;
     }
 
     return (
       <div className="container-fluid">
+
+        <div className="row">
+          <div className="col-md-4">
+            <Link to="/campus"> <button className="btn btn-lg btn-primary">Add a campus</button> </Link>
+          </div>
+        </div>
+
         <div>
-          <h2>{name}</h2>
-          <p>More information
+        <p className="card-text"><h2><Link to={`/campusdetails/${id}`}>{name}</Link></h2> </p>
+      <p> Click on the campus' name to edit it's details
           </p>
           <table className="table table-bordered">
             <thead>
@@ -47,7 +53,7 @@ class CampusList extends Component {
                   );
                 }
               })
-}
+            }
 
             </tbody>
           </table>
@@ -65,6 +71,6 @@ const mapDispatch = dispatch => ({
   // }
 });
 
-const mapProps = state => ({campuses: state.campus, students: state.student})
+const mapProps = state => ({campuses: state.campuses, students: state.students})
 
 export default connect(mapProps, mapDispatch)(CampusList);

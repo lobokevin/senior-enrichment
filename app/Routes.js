@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router} from 'react-router-dom';
-import { Route, Switch } from 'react-router-dom';
-
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -11,8 +9,10 @@ import AllStudents from './components/AllStudents';
 import CampusList from './components/CampusList';
 import NewStudent from './components/NewStudent';
 import StudentDetails from './components/StudentDetails';
-import {fetchStudentsThunk} from './reducers/student';
-import {fetchCampusesThunk} from './reducers/campus';
+import NewCampus from './components/NewCampus'
+import CampusDetails from './components/CampusDetails';
+import {fetchStudentsThunkCreator} from './reducers/students';
+import {fetchCampusesThunkCreator} from './reducers/campuses';
 
 /* -----------------    COMPONENT     ------------------ */
 
@@ -32,6 +32,8 @@ class Routes extends Component {
             <Route exact path="/campus/:id" component={CampusList} />
             <Route exact path="/student/:id" component={StudentDetails} />
             <Route exact path="/student" component={NewStudent} />
+            <Route exact path="/campus" component={NewCampus} />
+            <Route exact path="/campusdetails/:id" component={CampusDetails} />
             <Route exact path="/" component={AllCampus} />
 
           {/* <Route exat path="" */}
@@ -51,8 +53,8 @@ const mapProps = state => ({});
 
 const mapDispatch = dispatch => ({
   fetchInitialData: () => {
-    dispatch(fetchStudentsThunk());
-    dispatch(fetchCampusesThunk());
+    dispatch(fetchStudentsThunkCreator());
+    dispatch(fetchCampusesThunkCreator());
   }
 }
 );

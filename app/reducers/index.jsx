@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
 
-import student from './student';
-import campus from './campus';
+import students from './students';
+import campuses from './campuses';
 
-export default combineReducers({student, campus});
+export default combineReducers({students, campuses});

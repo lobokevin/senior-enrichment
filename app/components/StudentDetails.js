@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import store from '../store.jsx'
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, withRouter} from 'react-router-dom';
 
-import {updateStudentThunk} from '../reducers/student'
+import {updateStudentThunkCreator} from '../reducers/students'
 
 class StudentDetails extends Component {
   constructor(props) {
@@ -102,15 +100,15 @@ handleSubmit(event){
 // CONTAINER
 
 const mapProps = state => ({
-  students: state.student,
-  campuses: state.campus
+  students: state.students,
+  campuses: state.campuses
 });
 
 const mapDispatch = dispatch => ({
   updateStudent: (student) => {
-    dispatch(updateStudentThunk(student));
+    dispatch(updateStudentThunkCreator(student));
   }
 }
 );
 
-export default withRouter(connect(mapProps, mapDispatch)(StudentDetails));//is withRouter necessary?
+export default (connect(mapProps, mapDispatch)(StudentDetails));//is withRouter necessary?

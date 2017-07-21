@@ -1,17 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { Link, NavLink, withRouter } from 'react-router-dom';
-// import history from '../history';
-// import { logout as logOutUser } from '../redux/auth';
 
 /* -----------------    COMPONENT     ------------------ */
 
-class Navbar extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+function Navbar(){
 
-  render() {
     return (
       <nav className="navbar navbar-default">
         <div className="container">
@@ -42,22 +36,11 @@ class Navbar extends React.Component {
     );
    }
 
-}
 
 /* -----------------    CONTAINER     ------------------ */
 
-const mapProps = state => ({})
-// // equivalent to:
-// const mapState = state => {
-//   return {
-//     currentUser: state.currentUser
-//   };
-// };
+const mapProps = () => ({})
 
 const mapDispatch = () => ({})
-  // logout: () => {
-  //   dispatch(logOutUser());
-    // history.push('/'); // removed to demo logout instant re-render
-  // }
 
 export default connect(mapProps, mapDispatch)(Navbar);

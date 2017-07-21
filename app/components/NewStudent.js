@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import store from '../store.jsx'
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, withRouter} from 'react-router-dom';
-
-import {createStudentThunk} from '../reducers/student'
+import {createStudentThunkCreator} from '../reducers/students'
 
 class NewStudent extends Component {
   constructor(props) {
     super(props)
-
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,14 +21,13 @@ handleSubmit(event){
   }
 
   this.props.createStudent(newObj);
-
   this.props.history.push('/students');
 }
 
 
   render(){
     return (
-        <div className="container-fluid">
+      <div className="container-fluid">
       <div className="row">
       <div className="col-md-10">
               <h2>Add a Student</h2>
@@ -57,11 +52,10 @@ handleSubmit(event){
                 </div>
                 <div className="form-group">
 
-
                   <label className="control-label col-sm-2" htmlFor="campus">Campus:</label>
                   <div className="col-sm-10">
                   <select className="form-control" name="campus">
-                    {this.props.campuses.map(function(camp){
+                    {this.props.campuses.map( camp => {
                       return (<option key={camp.id} value={camp.id}>{camp.name}</option>);
                     })}
                   </select>
@@ -88,14 +82,14 @@ handleSubmit(event){
 // CONTAINER
 
 const mapProps = state => ({
-  campuses: state.campus
+  campuses: state.campuses
 });
 
 const mapDispatch = dispatch => ({
   createStudent: (student) => {
-    dispatch(createStudentThunk(student));//createStudentThunkCreator
+    dispatch(createStudentThunkCreator(student));//createStudentThunkCreator
   }
 }
 );
 
-export default withRouter(connect(mapProps, mapDispatch)(NewStudent));//is withRouter necessary?
+export default connect(mapProps, mapDispatch)(NewStudent);//is withRouter necessary?

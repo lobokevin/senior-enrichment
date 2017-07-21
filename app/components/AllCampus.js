@@ -3,24 +3,19 @@ import Campus from './Campus';
 import {connect} from 'react-redux';
 
 class AllCampus extends Component {
-  constructor(props) {//empty constructors are unnecessary
-    super(props)
-  }
 
   render() {
-
-    let campuses = this.props.campuses;
-
     return (
       <div>
-      <div className="row">
-        <h3>Welcome to Margaret Hamilton's Code Academy</h3>
-    </div>
-      { campuses.map(function(camp) {
-        return (<div key={camp.id}><Campus value={camp} /></div>);
-      }
-    )}
-  </div>
+        <div className="row">
+          <h3>Welcome to Margaret Hamilton's Code Academy</h3>
+        </div>
+        {this.props.campuses.map(function(camp) {
+          return (
+            <div key={camp.id}><Campus value={camp} /></div>
+          );
+        })}
+      </div>
     );
   }
 }
@@ -32,7 +27,6 @@ const mapDispatch = dispatch => ({
   // }
 });
 
-const mapProps = state => (
-  {campuses: state.campus})
+const mapProps = state => ({campuses: state.campuses})
 
 export default connect(mapProps, mapDispatch)(AllCampus);

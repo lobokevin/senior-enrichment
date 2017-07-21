@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {deleteStudentThunkCreator, fetchStudentsThunk} from '../reducers/student';
+import {deleteStudentThunkCreator} from '../reducers/students';
 import { Link } from 'react-router-dom';
 
 
@@ -30,10 +30,11 @@ handleDelete(event){
 
         <div>
        <h2>List of Students</h2>
-       <p>r</p>
+       <p />
        <table className="table table-bordered">
          <thead>
            <tr>
+              <th>Id</th>
              <th>Name</th>
              <th>Email</th>
              <th>Delete</th>
@@ -43,7 +44,8 @@ handleDelete(event){
          <tbody>
            {allStudents.map(stud => {
              return ( <tr key={stud.id}>
-               <td>{stud.name}</td>
+               <td>{stud.id}</td>
+              <td> <Link to={`/student/${stud.id}`} >{stud.name} </Link></td>
              <td>{stud.email}</td>
            <td><button className="btn btn-sm  btn-danger" value={stud.id} onClick={this.handleDelete} name="id" >Delete</button></td>
          <td><Link to={`/student/${stud.id}`}> <button className="btn btn-sm  btn-success">Update this student</button> </Link></td>
@@ -64,8 +66,8 @@ handleDelete(event){
 //CONTAINER
 const mapDispatch = dispatch => ({
   deleteStudent: (id) => {
-      let thunk = deleteStudentThunkCreator(id)
-      thunk(dispatch)
+      let thunk = deleteStudentThunkCreator(id);
+      thunk(dispatch);
       dispatch(thunk);
     //technically it's deleteStudentThunkCreator.. and deleteStudentThunk is the value returned from deleteStudentThunkCreator(id)
     //Sounds like I'm splitting hairs (and most students won't know the difference) but it's really important to make
@@ -75,7 +77,7 @@ const mapDispatch = dispatch => ({
 );
 
 const mapProps = state => ({
-  students: state.student
+  students: state.students
 })
 
 export default connect(mapProps, mapDispatch)(AllStudents);
