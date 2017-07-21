@@ -8,32 +8,13 @@ import {updateStudentThunk} from '../reducers/student'
 class StudentDetails extends Component {
   constructor(props) {
     super(props)
-
-    // this.state = {name: '',
-    // email: '',
-    // password: '',
-    // campusId: '' }
-
     this.handleSubmit = this.handleSubmit.bind(this);
-  //  this.handleChange = this.handleChange.bind(this);
-
   }
-
-  // handleChange(event){
-  //   event.preventDefault();
-  //   this.props.handleChange(event);
-  // }
-  // //
-  // // componentDidMount(){
-  // //
-  // // }
 
 handleSubmit(event){
   event.preventDefault();
   let campusValue = Number(event.target.campus.value);
   let idValue = Number(event.target.id.value)
-
-  //console.log('event.target.id.value', event.target.id.value, typeof idValue);
 
   let newObj = {
     id: idValue,
@@ -43,10 +24,8 @@ handleSubmit(event){
     campusId: campusValue
   }
 
-  // console.log('newOBj', newObj);
   this.props.updateStudent(newObj);
-  this.props.history.push('/');
-  //this.props.history.push('/students');
+  this.props.history.push('/students');
 
 }
 
@@ -61,7 +40,6 @@ handleSubmit(event){
     })
 
     student = student[0] || {};
-    //console.log('student!!', student);
 
     return (
         <div className="container-fluid">

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {deleteStudentThunk, fetchStudentsThunk} from '../reducers/student';
+import {deleteStudentThunkCreator, fetchStudentsThunk} from '../reducers/student';
 import { Link } from 'react-router-dom';
 
 
@@ -64,7 +64,9 @@ handleDelete(event){
 //CONTAINER
 const mapDispatch = dispatch => ({
   deleteStudent: (id) => {
-    dispatch(deleteStudentThunk(id));
+      let thunk = deleteStudentThunkCreator(id)
+      thunk(dispatch)
+      dispatch(thunk);
     //technically it's deleteStudentThunkCreator.. and deleteStudentThunk is the value returned from deleteStudentThunkCreator(id)
     //Sounds like I'm splitting hairs (and most students won't know the difference) but it's really important to make
     //that distinction

@@ -24,8 +24,6 @@ handleSubmit(event){
     campusId: numCampusId
   }
 
-  console.log('event.target.campus.value', event.target.campus.value, typeof numCampusId);
-
   this.props.createStudent(newObj);
 
   this.props.history.push('/students');
@@ -33,7 +31,6 @@ handleSubmit(event){
 
 
   render(){
-    console.log('Length', this.props.campuses);
     return (
         <div className="container-fluid">
       <div className="row">
@@ -65,7 +62,6 @@ handleSubmit(event){
                   <div className="col-sm-10">
                   <select className="form-control" name="campus">
                     {this.props.campuses.map(function(camp){
-                      console.log(camp);
                       return (<option key={camp.id} value={camp.id}>{camp.name}</option>);
                     })}
                   </select>

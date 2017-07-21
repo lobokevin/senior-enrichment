@@ -17,7 +17,7 @@ class AllCampus extends Component {
         <h3>Welcome to Margaret Hamilton's Code Academy</h3>
     </div>
       { campuses.map(function(camp) {
-        return (<div><Campus value={camp} /></div>);
+        return (<div key={camp.id}><Campus value={camp} /></div>);
       }
     )}
   </div>
